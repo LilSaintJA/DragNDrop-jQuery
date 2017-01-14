@@ -11,7 +11,7 @@
         // Options par défaults
         var defaults = {
             message: 'Déposez vos fichiers ici',
-            script: 'upload.php'
+            script: 'script/upload.php'
         };
 
         $.fn.dropfile = function (options) {
