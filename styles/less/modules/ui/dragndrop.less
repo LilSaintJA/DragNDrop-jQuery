@@ -43,9 +43,27 @@
             margin-top: 20px;
 
             .dropfile {
+                .flex();
+                .justify-content;
+                .align-items;
                 border: 5px dashed #CDCACA;
-                width: 100px;
-                height: 100px;
+                width: 250px;
+                height: 200px;
+                text-align: center;
+
+                &.hover {
+                    background-color: #EAE7E7;
+                    border: 5px dashed #625F5F;
+                    
+                    &.msg {
+                        color: #625F5F;
+                    }
+                }
+
+                .msg {
+                    font: bold @h6-size 'Overpass Mono', sans-serif;
+                    color: #CDCACA;
+                }
             }
         }
     }
