@@ -1,0 +1,52 @@
+/* ------------------- */
+/* *** LAYOUT *** */
+/* ------------------- */
+
+.droparea {
+    width: 100%;
+    height: 600px;
+    .flex(@direction:column);
+    .align-items();
+    .justify-content();
+    .box-sizing();
+    position: relative;
+    background-color: #DAD9D9;
+    padding: 0 30px 15px 30px;
+
+    .dropzone {
+        width: 100%;
+        height: 360px;
+        //        border: 20px solid #EFEEEE;
+        background-color: #FFF;
+        margin: 0 auto;
+        -moz-box-shadow: 0px 25px 20px -15px #656565;
+        -webkit-box-shadow: 0px 25px 20px -15px #656565;
+        -o-box-shadow: 0px 25px 20px -15px #656565;
+        box-shadow: 0px 25px 20px -15px #656565;
+        margin: 15px;
+
+        .drop-title {
+            .flex();
+            .align-items();
+            width: 100%;
+            height: 60px;
+            padding-left: 10px;
+            background-color: #878181;
+            font: bold @p-size 'Overpass Mono', sans-serif;
+            color: #FFF6F6;
+        }
+
+        .drop-container {
+            .flex();
+            .justify-content(@justify:space-around);
+            .flex-wrap;
+            margin-top: 20px;
+
+            .dropfile {
+                border: 5px dashed #CDCACA;
+                width: 100px;
+                height: 100px;
+            }
+        }
+    }
+}
