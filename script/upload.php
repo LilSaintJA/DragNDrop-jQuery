@@ -1,6 +1,7 @@
 <?php
 
 $h = getallheaders();
-print_r($h);
+$source = file_get_contents('php://input');
+file_put_contents('../assets/imgs/' . $h['x-file-name'], $source);
 
 ?>

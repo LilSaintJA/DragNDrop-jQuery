@@ -44,6 +44,7 @@
                 this.addEventListener('drop', function (evt) {
                     evt.preventDefault();
                     var files = evt.dataTransfer.files;
+                    log(files);
                     upload(files, $(this), 0);
                 }, false);
             });
@@ -60,8 +61,8 @@
                 xhr.open('post', script, true); // true = asynchronous
                 xhr.setRequestHeader('content-type', 'multipart/form-data');
                 xhr.setRequestHeader('x-file-type', file.type);
-                xhr.setRequestHeader('x-file-type', file.fileSize);
-                xhr.setRequestHeader('x-file-type', file.fileName);
+                xhr.setRequestHeader('x-file-size', file.size);
+                xhr.setRequestHeader('x-file-name', file.name);
                 xhr.send(file);
             }
         };
