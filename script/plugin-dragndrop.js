@@ -79,12 +79,15 @@
                     }
                     //                    area.clone().insertAfter(area).dropfile(options);
                     area.append(json.content);
+                    log(area);
                     $('.msg').remove();
                     $('.progress').remove();
                     progress.addClass('hide');
                     //                    log('prout');
 
                 }, false);
+
+
 
                 // Evenement chargement progressif
                 xhr.upload.addEventListener('progress', function (evt) {
