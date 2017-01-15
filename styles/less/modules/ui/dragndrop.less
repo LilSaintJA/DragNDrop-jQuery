@@ -1,7 +1,8 @@
-/* ------------------- */
-/* *** LAYOUT *** */
-/* ------------------- */
+/* ----------------------------- */
+/* *** MODULE DRAG'N'DROP *** */
+/* ----------------------------- */
 
+/* Container principal */
 .droparea {
     width: 100%;
     height: 600px;
@@ -16,26 +17,23 @@
 
 .dropzone {
     width: 70%;
-    background-color: #FFF;
     margin: 0 auto;
-    -moz-box-shadow: 0px 25px 20px -15px #1d2c33;
-    -webkit-box-shadow: 0px 25px 20px -15px #1d2c33;
-    -o-box-shadow: 0px 25px 20px -15px #1d2c33;
-    box-shadow: 0px 25px 20px -15px #1d2c33;
-    margin: 15px;
+    background-color: @background-color;
+    .box-shadow(@string:0px 20px 20px -15px @primary-color);
 
     .drop-title {
-        .flex();
-        .align-items();
         width: 100%;
         height: 60px;
+        .flex();
+        .align-items();
         padding-left: 10px;
-        background-color: #878181;
-        font: bold @p-size 'Overpass Mono', sans-serif;
-        color: #FFF6F6;
+        font: bold @p-size @font-heading;
+        color: @secondary-font-color;
+        background-color: @secondary-color;
     }
 
 }
+/* Zone dropable */
 .drop-container {
     height: 360px;
     .flex();
@@ -43,12 +41,12 @@
     .flex-wrap;
     .align-items;
     position: relative;
-    padding-left: 50px;
-    border: 2px dashed #1d2c33;
+    padding: 0 50px;
+    border: 2px dashed @primary-color;
 
     &.hover {
-        background-color: #EAE7E7;
-        border: 5px dashed #625F5F;
+        background-color: rgba(149, 178, 191, 0.18);
+        border: 2px solid @primary-color;
 
     }
     .img-drop:not(:last-child) {
@@ -56,27 +54,40 @@
     }
 
     .msg {
-        width: 100%;
+        width: @default-container-width;
+        font: bold @h6-size @font-heading;
+        color: @primary-font-color;
         text-align: center;
-        font: bold @h6-size 'Overpass Mono', sans-serif;
-        color: #CDCACA;
     }
-    
+
+    /* Bar de progression */
     .progress {
+        width: 0;
+        height: 25px;
         .flex;
         position: absolute;
         text-align: center;
-        width: 0;
-        height: 25px;
         background: rgba(3, 149, 76, 0.65);
         transition: width .3s;
         border-radius: 20px;
 
     }
     .progress.hide {
-        opacity: 0;
-        transition: opacity 1.3s;
         width: 0%;
         position: relative;
+        opacity: 0;
+        transition: opacity 1.3s;
+    }
+}
+
+/* Footer */
+.footer {
+    .flex;
+    .justify-content;
+    margin: 15px 0;
+
+    .copyright-footer {
+        font: bold @p-size @font-heading;
+        color: @primary-font-color;
     }
 }

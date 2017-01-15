@@ -25,5 +25,9 @@
                 </div>
             </section>
         </div>
+        <footer id="footer" class="footer">
+            <span class="copyright-footer">&copy; LilSaint | W@C Ambition Féminine
+            </span>
+        </footer>
     </body>
 </html>
