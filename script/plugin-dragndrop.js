@@ -24,6 +24,7 @@
             this.each(function () {
                 $('<span>').addClass('msg').append(msg).appendTo(this);
                 $('<div>').addClass('progress').appendTo(this);
+                log(this);
                 $(this).bind({
                     dragenter: function (evt) {
                         evt.preventDefault();
@@ -47,6 +48,7 @@
                     var files = evt.dataTransfer.files;
                     //                    log(files);
                     upload(files, $(this), 0);
+                    log($(this));
                 }, false);
             });
 
@@ -77,6 +79,8 @@
                     }
                     //                    area.clone().insertAfter(area).dropfile(options);
                     area.append(json.content);
+                    $('.msg').remove();
+                    $('.progress').remove();
                     progress.addClass('hide');
                     //                    log('prout');
 
