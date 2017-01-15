@@ -10,82 +10,73 @@
     .justify-content();
     .box-sizing();
     position: relative;
-    background-color: #DAD9D9;
     padding: 0 30px 15px 30px;
+    background: url(../../assets/imgs/fond-min.png) no-repeat center center;
+}
 
-    .dropzone {
-        width: 70%;
-        //        height: 360px;
-        background-color: #FFF;
-        margin: 0 auto;
-        -moz-box-shadow: 0px 25px 20px -15px #656565;
-        -webkit-box-shadow: 0px 25px 20px -15px #656565;
-        -o-box-shadow: 0px 25px 20px -15px #656565;
-        box-shadow: 0px 25px 20px -15px #656565;
-        margin: 15px;
+.dropzone {
+    width: 70%;
+    background-color: #FFF;
+    margin: 0 auto;
+    -moz-box-shadow: 0px 25px 20px -15px #1d2c33;
+    -webkit-box-shadow: 0px 25px 20px -15px #1d2c33;
+    -o-box-shadow: 0px 25px 20px -15px #1d2c33;
+    box-shadow: 0px 25px 20px -15px #1d2c33;
+    margin: 15px;
 
-        .drop-title {
-            .flex();
-            .align-items();
-            width: 100%;
-            height: 60px;
-            padding-left: 10px;
-            background-color: #878181;
-            font: bold @p-size 'Overpass Mono', sans-serif;
-            color: #FFF6F6;
-        }
-
-        .drop-container {
-            height: 360px;
-            .flex();
-            .justify-content(@justify:flex-start);
-            .flex-wrap;
-            .align-items;
-            padding-left: 50px;
-            //            margin-top: 20px;
-            border: 5px dashed #CDCACA;
-
-            &.hover {
-                background-color: #EAE7E7;
-                border: 5px dashed #625F5F;
-
-            }
-
-            .msg {
-                width: 100%;
-                text-align: center;
-                font: bold @h6-size 'Overpass Mono', sans-serif;
-                color: #CDCACA;
-            }
-
-            .dropfile {
-                .flex();
-                .justify-content;
-                .align-items;
-                width: auto;
-                //                height: 200px;
-                text-align: center;
-                margin-right: 15px;
-            }
-        }
+    .drop-title {
+        .flex();
+        .align-items();
+        width: 100%;
+        height: 60px;
+        padding-left: 10px;
+        background-color: #878181;
+        font: bold @p-size 'Overpass Mono', sans-serif;
+        color: #FFF6F6;
     }
-}
-
-
-.progress {
-    .flex;
-    position: absolute;
-    text-align: center;
-    width: 0;
-    height: 25px;
-    background: rgba(3, 149, 76, 0.65);
-    transition: width .3s;
-    border-radius: 20px;
 
 }
-.progress.hide {
-    opacity: 0;
-    transition: opacity 1.3s;
-    width: 0%;
+.drop-container {
+    height: 360px;
+    .flex();
+    .justify-content(@justify:flex-start);
+    .flex-wrap;
+    .align-items;
     position: relative;
+    padding-left: 50px;
+    border: 2px dashed #1d2c33;
+
+    &.hover {
+        background-color: #EAE7E7;
+        border: 5px dashed #625F5F;
+
+    }
+    .img-drop:not(:last-child) {
+        margin-right: 15px;
+    }
+
+    .msg {
+        width: 100%;
+        text-align: center;
+        font: bold @h6-size 'Overpass Mono', sans-serif;
+        color: #CDCACA;
+    }
+    
+    .progress {
+        .flex;
+        position: absolute;
+        text-align: center;
+        width: 0;
+        height: 25px;
+        background: rgba(3, 149, 76, 0.65);
+        transition: width .3s;
+        border-radius: 20px;
+
+    }
+    .progress.hide {
+        opacity: 0;
+        transition: opacity 1.3s;
+        width: 0%;
+        position: relative;
+    }
 }

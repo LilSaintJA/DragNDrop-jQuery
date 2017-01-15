@@ -20,7 +20,6 @@
                     <div class="dropzone">
                         <span class="drop-title">Drag'n'Drop</span>
                         <div class="drop-container">
-                            <div class="dropfile"></div>
                         </div>
                     </div>
                 </div>
