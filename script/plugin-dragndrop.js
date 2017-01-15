@@ -1,4 +1,4 @@
-/*global console, document, jQuery */
+/*global console, document, jQuery, XMLHttpRequest, upload */
 (function ($) {
     'use strict';
     $(document).ready(function () {
@@ -21,7 +21,7 @@
             }
 
             var msg = defaults.message;
-            return this.each(function () {
+            this.each(function () {
                 $('<span>').addClass('msg').append(msg).appendTo(this);
                 $('<div>').addClass('progress').appendTo(this);
                 $(this).bind({
@@ -45,7 +45,7 @@
                 this.addEventListener('drop', function (evt) {
                     evt.preventDefault();
                     var files = evt.dataTransfer.files;
-                    log(files);
+                    //                    log(files);
                     upload(files, $(this), 0);
                 }, false);
             });
@@ -66,16 +66,19 @@
                     // Convertit du texte en JSON
                     var json = jQuery.parseJSON(evt.target.responseText); // Retour JSON
                     area.removeClass('hover');
+
                     // Relancer un autre chargement
                     if (index < files.length - 1) {
                         upload(files, area, index + 1);
                     }
                     if (json.error) {
-                        console.log(json.error);
+                        //                        console.log(json.error);
                         return false;
                     }
                     //                    area.clone().insertAfter(area).dropfile(options);
                     area.append(json.content);
+                    progress.addClass('hide');
+                    //                    log('prout');
 
                 }, false);
 
@@ -83,8 +86,6 @@
                 xhr.upload.addEventListener('progress', function (evt) {
                     if (evt.lengthComputable) {
                         var perc = evt.loaded / evt.total * 100 + '%';
-
-                        log(perc);
                         progress.css({
                             width: perc
                         }).html(progress);
@@ -99,6 +100,8 @@
                 xhr.setRequestHeader('x-file-name', file.name);
                 xhr.send(file);
             }
+            // Je retourne l'objet jQuery qui m'a permis de faire la fonction
+            return this;
         };
     });
 }(jQuery));
