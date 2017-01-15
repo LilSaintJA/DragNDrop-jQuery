@@ -20,11 +20,13 @@
                     <div class="dropzone">
                         <span class="drop-title">Drag'n'Drop</span>
                         <div class="drop-container">
-                            <?php foreach(glob('assets/imgs/*') as $file): ?>
-                            <div class="dropfile">
-                                <img src="<?= $file; ?>" alt="">
-                            </div>
-                            <?php endforeach; ?>
+                            <!--
+< ?php foreach(glob('assets/imgs/*') as $file): ?>
+<div class="dropfile">
+<img src="< ?= $file; ?>" alt="">
+</div>
+< ?php endforeach; ?>
+-->
                             <div class="dropfile"></div>
                         </div>
                     </div>
