@@ -19,8 +19,7 @@
                 $.extend(defaults, options);
             }
 
-            var msg = defaults.message,
-                script = defaults.script;
+            var msg = defaults.message;
             return this.each(function () {
                 $('<span>').addClass('msg').append(msg).appendTo(this);
                 $(this).bind({
@@ -58,7 +57,22 @@
             function upload(files, area, index) {
                 var file = files[index],
                     xhr = new XMLHttpRequest();
-                xhr.open('post', script, true); // true = asynchronous
+
+                // Evenements
+                xhr.addEventListener('load', function (evt) {
+                    // Convertit du texte en JSON
+                    var json = jQuery.parseJSON(evt.target.responseText); // Retour JSON
+                    area.removeClass('hover');
+                    if(json.error) {
+                        console.log(json.error);
+                        return false;
+                    }
+
+                    area.append(json.content);
+                });
+
+
+                xhr.open('post', defaults.script, true); // true = asynchronous
                 xhr.setRequestHeader('content-type', 'multipart/form-data');
                 xhr.setRequestHeader('x-file-type', file.type);
                 xhr.setRequestHeader('x-file-size', file.size);
