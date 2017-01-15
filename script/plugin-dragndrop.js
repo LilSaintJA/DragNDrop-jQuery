@@ -11,7 +11,8 @@
         // Options par défaults
         var defaults = {
             message: 'Déposez vos fichiers ici',
-            script: 'script/upload.php'
+            script: 'script/upload.php',
+            clone: true
         };
 
         $.fn.dropfile = function (options) {
@@ -22,6 +23,7 @@
             var msg = defaults.message;
             return this.each(function () {
                 $('<span>').addClass('msg').append(msg).appendTo(this);
+                $('<div>').addClass('progress').appendTo(this);
                 $(this).bind({
                     dragenter: function (evt) {
                         evt.preventDefault();
@@ -56,21 +58,39 @@
              */
             function upload(files, area, index) {
                 var file = files[index],
-                    xhr = new XMLHttpRequest();
+                    xhr = new XMLHttpRequest(),
+                    progress = area.find('.progress');
 
                 // Evenements
                 xhr.addEventListener('load', function (evt) {
                     // Convertit du texte en JSON
                     var json = jQuery.parseJSON(evt.target.responseText); // Retour JSON
                     area.removeClass('hover');
-                    if(json.error) {
+                    // Relancer un autre chargement
+                    if (index < files.length - 1) {
+                        upload(files, area, index + 1);
+                    }
+                    if (json.error) {
                         console.log(json.error);
                         return false;
                     }
-
+                    //                    area.clone().insertAfter(area).dropfile(options);
                     area.append(json.content);
-                });
 
+                }, false);
+
+                // Evenement chargement progressif
+                xhr.upload.addEventListener('progress', function (evt) {
+                    if (evt.lengthComputable) {
+                        var perc = evt.loaded / evt.total * 100 + '%';
+
+                        log(perc);
+                        progress.css({
+                            width: perc
+                        }).html(progress);
+
+                    }
+                }, false);
 
                 xhr.open('post', defaults.script, true); // true = asynchronous
                 xhr.setRequestHeader('content-type', 'multipart/form-data');

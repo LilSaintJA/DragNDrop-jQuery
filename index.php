@@ -21,7 +21,7 @@
                         <span class="drop-title">Drag'n'Drop</span>
                         <div class="drop-container">
                             <?php foreach(glob('assets/imgs/*') as $file): ?>
-                            <div class="">
+                            <div class="dropfile">
                                 <img src="<?= $file; ?>" alt="">
                             </div>
                             <?php endforeach; ?>
