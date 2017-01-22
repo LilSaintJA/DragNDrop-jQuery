@@ -20,7 +20,6 @@
                     <div class="dropzone">
                         <span class="drop-title">Drag'n'Drop</span>
                         <div class="drop-container">
-
                             <?php foreach(glob('assets/imgs/*') as $file): ?>
                             <div class="dropfile">
                                 <img src="<?= $file; ?>" alt="">
@@ -28,10 +27,15 @@
                             <?php endforeach; ?>
 
                             <div class="dropfile"></div>
+
                         </div>
                     </div>
                 </div>
             </section>
         </div>
+        <footer id="footer" class="footer">
+            <span class="copyright-footer">&copy; LilSaint | W@C Ambition Féminine
+            </span>
+        </footer>
     </body>
 </html>

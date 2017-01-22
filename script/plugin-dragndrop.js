@@ -24,7 +24,6 @@
             this.each(function () {
                 $('<span>').addClass('msg').append(msg).appendTo(this);
                 $('<div>').addClass('progress').appendTo(this);
-                log(this);
                 $(this).bind({
                     dragenter: function (evt) {
                         evt.preventDefault();
@@ -46,17 +45,23 @@
                 this.addEventListener('drop', function (evt) {
                     evt.preventDefault();
                     var files = evt.dataTransfer.files;
-                    //                    log(files);
                     upload(files, $(this), 0);
                     log($(this));
                 }, false);
+
+                $('.jsp').change(function (evt) {
+                    //                    alert($(this).val());
+                    var files = evt.dataTransfer.files;
+                    log(files);
+                    upload(files, $(this), 0);
+                });
             });
 
             /**
              * Permet de gérer les uploads de fichier One by One
-             * @param {[[Type]]} files [[Description]]
-             * @param {[[Type]]} area  [[Description]]
-             * @param {[[Type]]} index [[Description]]
+             * @param {object} files [Les fichiers à uploader]
+             * @param {object} area  [Dropzone sur laquelle est appelé le plugin]
+             * @param {number} index [Index de l'objet files]
              */
             function upload(files, area, index) {
                 var file = files[index],
@@ -74,16 +79,15 @@
                         upload(files, area, index + 1);
                     }
                     if (json.error) {
-                        //                        console.log(json.error);
+                        log(json.error);
                         return false;
                     }
-                    //                    area.clone().insertAfter(area).dropfile(options);
+
                     area.append(json.content);
                     log(area);
                     $('.msg').remove();
                     $('.progress').remove();
                     progress.addClass('hide');
-                    //                    log('prout');
 
                 }, false);
 
@@ -96,7 +100,6 @@
                         progress.css({
                             width: perc
                         }).html(progress);
-
                     }
                 }, false);
 

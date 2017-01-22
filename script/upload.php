@@ -13,7 +13,7 @@ if(!in_array($h['x-file-type'], $types)) {
     file_put_contents('../assets/imgs/' . $h['x-file-name'], $source);
     // Si l'uplaod c'est bien passé je renvoie des infos au JS
     $json_ob->name = $h['x-file-name']; // En cas de sauvegarde en BDD
-    $json_ob->content = '<img src="assets/imgs/' . $h['x-file-name'] . '"/>';
+    $json_ob->content = '<img src="assets/imgs/' . $h['x-file-name'] . '" class="img-drop"/>';
 }
 
 echo json_encode($json_ob);
