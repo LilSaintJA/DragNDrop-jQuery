@@ -12,14 +12,19 @@
     .box-sizing();
     position: relative;
     padding: 0 30px 15px 30px;
+    background: url(../../assets/ex/fond.png) no-repeat center center;
+
+    .dropzone {
+        width: 70%;
+        background-color: #FFF;
+        margin: 0 auto;
+        -moz-box-shadow: 0px 25px 20px -15px #1a222e;
+        -webkit-box-shadow: 0px 25px 20px -15px #1a222e;
+        -o-box-shadow: 0px 25px 20px -15px #1a222e;
+        box-shadow: 0px 25px 20px -15px #1a222e;
+        margin: 15px;
     background: url(../../assets/imgs/fond-min.png) no-repeat center center;
 }
-
-.dropzone {
-    width: 70%;
-    margin: 0 auto;
-    background-color: @background-color;
-    .box-shadow(@string:0px 20px 20px -15px @primary-color);
 
     .drop-title {
         width: 100%;
@@ -31,7 +36,6 @@
         color: @secondary-font-color;
         background-color: @secondary-color;
     }
-
 }
 /* Zone dropable */
 .drop-container {
